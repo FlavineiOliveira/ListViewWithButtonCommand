@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppListView.Views.HomePage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center">
+            <Label Text="Teste de Botão na ListView!" HorizontalOptions="Center" />
+            <ListView x:Name="ListViewAlunos" ItemsSource="{Binding Aluno}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Padding="5" Margin="5">
+                                <StackLayout>
+                                    <Label Text="{Binding Nome}" />
+                                    <Label Text="{Binding Escola}" />
+                                    <Button Text="Selecionar Item" Command="{Binding Path=BindingContext.SelecionarItem, Source={x:Reference ListViewAlunos}}" CommandParameter="{Binding .}" TextColor="White" BackgroundColor="Blue" HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="Item Selecionado" HorizontalOptions="Center" Margin="5"/>
+            <Label Text="{Binding NomeSelecionado}" HorizontalOptions="Center" />
+            <Label Text="{Binding EscolaSelecionado}" HorizontalOptions="Center" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
